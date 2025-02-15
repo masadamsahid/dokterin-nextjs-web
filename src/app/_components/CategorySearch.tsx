@@ -24,7 +24,7 @@ const CategorySearch = (props: Props) => {
   }, []);
 
   const getCategoryList = () => {
-    GlobalApi.getCategory().then(res => {
+    GlobalApi.getCategories().then(res => {
       console.log(res);
       setCategories(res.data.data);
     });

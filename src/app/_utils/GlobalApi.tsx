@@ -10,8 +10,8 @@ const axiosClient = axios.create({
   },
 });
 
-const getCategory = () => axiosClient.get('/categories?populate=*');
+const getCategories = () => axiosClient.get('/categories?populate=*');
 
 export default {
-  getCategory
+  getCategories
 };
