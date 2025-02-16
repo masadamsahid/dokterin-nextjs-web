@@ -12,8 +12,10 @@ const axiosClient = axios.create({
 
 const getCategories = () => axiosClient.get('/categories?populate=*');
 const getDoctorList = async () => await axiosClient.get('/doctors?populate=*');
+const getDoctorByCategory = async (category_slug: string) => await axiosClient.get(`/doctors?filters[categories][Slug][$in]=${category_slug}&populate=*`);
 
 export default {
   getCategories,
   getDoctorList,
+  getDoctorByCategory,
 };

@@ -3,17 +3,18 @@ import Image from "next/image";
 
 type Props = {
   doctors: Doctor[];
+  heading?: string;
 }
 
-const DoctorList = ({ doctors }: Props) => {
+const DoctorList = ({ doctors, heading='Popular Doctors' }: Props) => {
   if (doctors.length < 1) return null; // TODO: return a "no doctor" component instead of just null;
 
   return (
     <div className="mb-10">
-      <h2 className="font-bold text-xl px-8">
-        Popular Doctors
+      <h2 className="font-bold text-xl px-8 text-center">
+        {heading}
       </h2>
-      <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">
         {doctors.map(doctor => (
           <div key={doctor.id} className="border rounded-lg p-3 cursor-pointer hover:border-primary hover:shadow-sm transition-all duration-200 flex flex-col">
             <Image

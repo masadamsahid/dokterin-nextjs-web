@@ -2,8 +2,8 @@ export type Category = {
   id: number;
   documentId: string;
   Name: string;
+  Slug: string;
   Icon: { url: string };
-
 };
 
 export type CategoryShort = Omit<Category, "Icon">;

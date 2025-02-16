@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 import type { Category } from "@/lib/data-types";
+import Link from "next/link";
 
 type Props = {}
 
@@ -43,10 +44,10 @@ const CategorySearch = (props: Props) => {
           if (i + 1 > 6) return null;
 
           return (
-            <div key={c.documentId} className="flex flex-col text-center gap-2 items-center p-5 bg-primary/10 rounded-lg hover:scale-110 transition-all ease-in-out cursor-pointer">
+            <Link key={c.documentId} href={`/search/${c.Slug}`} className="flex flex-col text-center gap-2 items-center p-5 bg-primary/10 rounded-lg hover:scale-110 transition-all ease-in-out cursor-pointer">
               <Image src={c.Icon.url} alt={c.Name} width={40} height={40} />
               <label className="text-primary text-sm">{c.Name}</label>
-            </div>
+            </Link>
           );
         }) : ([1, 2, 3, 4, 5, 6].map((c, i) => {
           return (
