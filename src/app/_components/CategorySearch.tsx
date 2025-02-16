@@ -7,12 +7,7 @@ import GlobalApi from "@/app/_utils/GlobalApi";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-type Category = {
-  id: number;
-  documentId: string;
-  Name: string;
-  Icon: { url: string };
-};
+import type { Category } from "@/lib/data-types";
 
 type Props = {}
 
