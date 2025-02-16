@@ -15,7 +15,7 @@ const DoctorList = ({ doctors }: Props) => {
       </h2>
       <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {doctors.map(doctor => (
-          <div key={doctor.id} className="border rounded-lg p-3 cursor-pointer hover:border-primary hover:shadow-sm transition-all duration-200">
+          <div key={doctor.id} className="border rounded-lg p-3 cursor-pointer hover:border-primary hover:shadow-sm transition-all duration-200 flex flex-col">
             <Image
               src={doctor.Image.url}
               alt={doctor.Name}
@@ -23,7 +23,7 @@ const DoctorList = ({ doctors }: Props) => {
               height={200}
               className="h-[200px] w-full object-cover rounded-lg"
             />
-            <div className="mt-3 flex items-baseline flex-col gap-1">
+            <div className="mt-3 flex items-baseline flex-col gap-1 flex-1">
               <p className="text-[10px] bg-primary/20 p-1 rounded-full px-2 text-primary">
                 {doctor.categories[0].Name}
               </p>
@@ -33,7 +33,7 @@ const DoctorList = ({ doctors }: Props) => {
               <p className="text-primary text-sm">{doctor.Year_of_Experience}</p>
               <h2 className="text-gray-500 text-sm">{doctor.Address}</h2>
 
-              <p className="p-2 px-3 border border-primary text-primary rounded-lg w-full text-center text-[11px] mt-2 cursor-pointer hover:bg-primary hover:text-white transition-all duration-200">
+              <p className="p-2 px-3 border border-primary text-primary rounded-lg w-full text-center text-[11px] mt-auto cursor-pointer hover:bg-primary hover:text-white transition-all duration-200">
                 Book Now
               </p>
             </div>
