@@ -39,8 +39,8 @@ const CategorySearch = (props: Props) => {
         </Button>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 mt-5">
-        {categories.map((c, i) => {
-          if(i+1 > 6) return null;
+        {categories.length > 0 ? categories.map((c, i) => {
+          if (i + 1 > 6) return null;
 
           return (
             <div key={c.documentId} className="flex flex-col text-center gap-2 items-center p-5 bg-primary/10 rounded-lg hover:scale-110 transition-all ease-in-out cursor-pointer">
@@ -48,7 +48,12 @@ const CategorySearch = (props: Props) => {
               <label className="text-primary text-sm">{c.Name}</label>
             </div>
           );
-        })}
+        }) : ([1, 2, 3, 4, 5, 6].map((c, i) => {
+          return (
+            <div key={c} className="w-32 h-28 bg-primary/30 animate-pulse duration-700 rounded-lg">
+            </div>
+          );
+        }))}
       </div>
     </div>
   );
