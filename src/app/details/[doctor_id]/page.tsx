@@ -9,7 +9,7 @@ type Props = {
 }
 
 const DoctorDetailsPage = async ({ params }: Props) => {
-  const { doctor_id } = params;
+  const { doctor_id } = await params;
 
   const doctor = await GlobalApi.getDoctorById(doctor_id).then(({ data: res }) => {
     return res.data as Doctor;
