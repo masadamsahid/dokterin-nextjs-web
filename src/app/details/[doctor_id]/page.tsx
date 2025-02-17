@@ -15,7 +15,7 @@ const DoctorDetailsPage = async ({ params }: Props) => {
     return res.data as Doctor;
   });
 
-  console.log(doctor);
+  // console.log(doctor);
   
 
   return (
