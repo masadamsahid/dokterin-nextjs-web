@@ -18,9 +18,12 @@ const getDoctorById = async (doctor_document_id: string) => await axiosClient.ge
 type CreateAppointmentData = {
 
 };
+
 const createAppointment = async (data: CreateAppointmentData) => await axiosClient.post(`/appointments/`, {
   ...data
 });
+
+const sendEmail = async (data:any) => await axios.post('/api/sendEmail', data);
 
 export default {
   getCategories,
@@ -28,4 +31,5 @@ export default {
   getDoctorByCategory,
   getDoctorById,
   createAppointment,
+  sendEmail,
 };

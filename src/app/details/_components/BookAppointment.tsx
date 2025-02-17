@@ -71,6 +71,7 @@ const BookAppointment = ({ doctor, ...props }: Props) => {
     
     await GlobalApi.createAppointment(data).then(({ data: res }) => {
       console.log({ res });
+      GlobalApi.sendEmail(data);
       toast.success('Success booking. A booking confirmation sent to your email');
     }).catch((err) => {
       console.error(err);
