@@ -1,5 +1,6 @@
 import type { Doctor } from "@/lib/data-types";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
   doctors: Doctor[];
@@ -34,9 +35,9 @@ const DoctorList = ({ doctors, heading='Popular Doctors' }: Props) => {
               <p className="text-primary text-sm">{doctor.Year_of_Experience}</p>
               <h2 className="text-gray-500 text-sm">{doctor.Address}</h2>
 
-              <p className="p-2 px-3 border border-primary text-primary rounded-lg w-full text-center text-[11px] mt-auto cursor-pointer hover:bg-primary hover:text-white transition-all duration-200">
+              <Link href={`/details/${doctor.id}`} className="p-2 px-3 border border-primary text-primary rounded-lg w-full text-center text-[11px] mt-auto cursor-pointer hover:bg-primary hover:text-white transition-all duration-200">
                 Book Now
-              </p>
+              </Link>
             </div>
           </div>
         ))}
