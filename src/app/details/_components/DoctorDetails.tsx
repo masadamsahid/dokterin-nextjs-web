@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
 import type { Doctor } from "@/lib/data-types";
 import { GraduationCap, MapPin } from "lucide-react";
 import Image from "next/image";
+import BookAppointment from "./BookAppointment";
 
 type Props = {
   doctor: Doctor;
@@ -28,7 +28,7 @@ const DoctorDetails = ({ doctor }: Props) => {
           <p className="text-[10px] bg-primary/20 p-1 rounded-full px-2 text-primary">
             {doctor.categories[0].Name}
           </p>
-          <Button className="mt-3 rounded-full">Book Appointment</Button>
+          <BookAppointment doctor={doctor} />
         </div>
       </div>
 
