@@ -13,7 +13,7 @@ const AppointmentList = ({ appointments, ...props }: Props) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
       {appointments && appointments.map((appointment) => (
-        <div key={appointment.documentId} className="flex gap-4 items-center border border-gray-300 p-3 rounded-lg">
+        <div key={appointment.documentId} className="flex gap-4 items-start border border-gray-300 p-3 rounded-lg">
           <Image
             src={appointment.doctor.Image.url}
             alt={appointment.doctor.Name}
@@ -35,7 +35,7 @@ const AppointmentList = ({ appointments, ...props }: Props) => {
               <Calendar className="min-h-4 min-w-4 size-4 lg:size-5 text-primary" /> Appointment on {moment(appointment.Appointment_Date).format('LL')}
             </p>
             <p className="flex gap-2 text-gray-700 items-start">
-              <Clock className="min-h-4 min-w-4 size-4 lg:size-5 text-primary" /> at {appointment.Time}
+              <Clock className="min-h-4 min-w-4 size-4 lg:size-5 text-primary" /> at {moment(appointment.Appointment_Date).format('h:mm a')}
             </p>
           </div>
         </div>
