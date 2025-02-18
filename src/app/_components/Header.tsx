@@ -19,12 +19,7 @@ const Header = async (props: Props) => {
     {
       id: 2,
       name: 'Explore',
-      path: '/explore',
-    },
-    {
-      id: 3,
-      name: 'Contact Us',
-      path: '/contact',
+      path: '/search',
     },
   ];
 
