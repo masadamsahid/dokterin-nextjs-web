@@ -54,7 +54,9 @@ const Header = async (props: Props) => {
           <PopoverContent className="w-44">
             <ul className="flex flex-col gap-2">
               <li className="cursor-pointer hover:bg-slate-100 p-2 rounded-md">Profile</li>
-              <li className="cursor-pointer hover:bg-slate-100 p-2 rounded-md">My Appointments</li>
+              <Link href='/my-appointments'>
+                <li className="cursor-pointer hover:bg-slate-100 p-2 rounded-md">My Appointments</li>
+              </Link>
               <li className="cursor-pointer hover:bg-slate-100 p-2 rounded-md">
                 <LogoutButton />
               </li>

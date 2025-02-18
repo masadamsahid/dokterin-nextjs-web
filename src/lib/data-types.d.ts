@@ -23,3 +23,14 @@ export type Doctor = {
   Year_of_Experience: string;
   categories: CategoryShort[] | Category[];
 }
+
+export type Appointment = {
+  id: number;
+  documentId: string;
+  Name: string;
+  Email: string;
+  Date: string;
+  Time: string;
+  Notes: string;
+  doctor: Doctor;
+}

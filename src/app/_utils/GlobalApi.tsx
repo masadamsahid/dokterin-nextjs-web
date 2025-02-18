@@ -25,6 +25,8 @@ const createAppointment = async (data: CreateAppointmentData) => await axiosClie
 
 const sendEmail = async (data:any) => await axios.post('/api/sendEmail', data);
 
+const getUserAppointmentList = async (user_email: string) => await axiosClient.get(`/appointments?filters[Email][$eq]=${user_email}&populate[doctor][populate]=Image&sort[0]=Date`);
+
 export default {
   getCategories,
   getDoctorList,
@@ -32,4 +34,5 @@ export default {
   getDoctorById,
   createAppointment,
   sendEmail,
+  getUserAppointmentList,
 };
