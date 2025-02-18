@@ -16,39 +16,28 @@ type Props = {
   doctor: Doctor;
 }
 
+const timeSlots = [9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5,].map((hour) => {
+  return {
+    identifier: `${Math.floor(hour).toString().padStart(2, '0')}:${hour % 1 === 0 ? '00' : '30'}`,
+    milliseconds: hour * 60 * 60 * 1000,
+  };
+});
+
+type TimeSlots = typeof timeSlots[0];
+
 const BookAppointment = ({ doctor, ...props }: Props) => {
   const [date, setDate] = useState<Date | undefined>();
-  const [timeSlot, setTimeSlot] = useState<{ time: string }[]>([]);
-  const [selectedTimeSlot, setSelectedTimeSlot] = useState<string | null>(null);
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState<TimeSlots | null>(null);
   const [notes, setNotes] = useState<string | null>(null);
 
   const { user } = useKindeBrowserClient();
 
   useEffect(() => {
-    getTime();
+    // getTime();
   }, []);
 
-  const getTime = () => {
-    const timeList = [];
-    for (let i = 10; i <= 12; i++) {
-      timeList.push({
-        time: i + ':00 AM'
-      });
-      timeList.push({
-        time: i + ':30 AM'
-      });
-    }
-    for (let i = 1; i <= 6; i++) {
-      timeList.push({
-        time: i + ':00 PM'
-      });
-      timeList.push({
-        time: i + ':30 PM'
-      });
-    }
+  const selectedDateTimeSlot = new Date ((date ? date.getTime() : 0) + (selectedTimeSlot ? selectedTimeSlot.milliseconds : 0));
 
-    setTimeSlot(timeList);
-  }
 
   const isPastDay = (day: Date) => {
     return day <= new Date();
@@ -56,19 +45,18 @@ const BookAppointment = ({ doctor, ...props }: Props) => {
 
   const saveBooking = async () => {
     console.log("mulai");
-    
+
     const data = {
       data: {
         UserName: `${user.given_name} ${user.family_name}`,
         Email: user.email,
-        Date: date,
-        Time: selectedTimeSlot,
+        Appointment_Date: selectedDateTimeSlot.toISOString(),
         doctor: { connect: doctor.documentId },
         Notes: notes,
       },
     };
     console.log("define data udah");
-    
+
     await GlobalApi.createAppointment(data).then(({ data: res }) => {
       console.log({ res });
       GlobalApi.sendEmail(data);
@@ -111,13 +99,13 @@ const BookAppointment = ({ doctor, ...props }: Props) => {
                 <Clock className="text-primary size-5" /> Select Time Slot
               </h2>
               <div className="grid grid-cols-3 gap-3 border rounded-lg p-3 mt-3">
-                {timeSlot.map((ts, i) => (
+                {timeSlots.map((ts, i) => (
                   <button
-                    key={ts.time}
-                    onClick={() => setSelectedTimeSlot(ts.time)}
-                    className={cn("p-1 px-2 border rounded-md text-center hover:bg-primary hover:text-white cursor-pointer", ts.time === selectedTimeSlot && "bg-primary text-white")}
+                    key={ts.identifier}
+                    onClick={() => setSelectedTimeSlot(ts)}
+                    className={cn("p-1 px-2 border rounded-md text-center hover:bg-primary hover:text-white cursor-pointer", ts === selectedTimeSlot && "bg-primary text-white")}
                   >
-                    {ts.time}
+                    {ts.identifier}
                   </button>
                 ))}
               </div>

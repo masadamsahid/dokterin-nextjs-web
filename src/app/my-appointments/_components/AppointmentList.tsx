@@ -24,7 +24,7 @@ const AppointmentList = ({ appointments, ...props }: Props) => {
           <div className="flex flex-col gap-2 w-full">
             <div className="flex justify-between">
               <h2 className="font-bold text-[18px]">{appointment.doctor.Name}</h2>
-              {new Date(appointment.Date) > new Date() && (
+              {new Date(appointment.Appointment_Date) > new Date() && (
                 <CancelAppointments appointment={appointment} />
               )}
             </div>
@@ -32,7 +32,7 @@ const AppointmentList = ({ appointments, ...props }: Props) => {
               <MapPin className="min-h-4 min-w-4 size-4 lg:size-5 text-primary" /> {appointment.doctor.Address}
             </p>
             <p className="flex gap-2 text-gray-700 items-start">
-              <Calendar className="min-h-4 min-w-4 size-4 lg:size-5 text-primary" /> Appointment on {moment(appointment.Date).format('LL')}
+              <Calendar className="min-h-4 min-w-4 size-4 lg:size-5 text-primary" /> Appointment on {moment(appointment.Appointment_Date).format('LL')}
             </p>
             <p className="flex gap-2 text-gray-700 items-start">
               <Clock className="min-h-4 min-w-4 size-4 lg:size-5 text-primary" /> at {appointment.Time}

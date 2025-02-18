@@ -22,7 +22,7 @@ const MyAppointments = async (props: Props) => {
   // console.log(appointments);
 
   const { upcoming, expired } = appointments.reduce((appointments, curr) => {
-    if(new Date(curr.Date) >= new Date()) appointments.upcoming.push(curr);
+    if(new Date(curr.Appointment_Date) >= new Date()) appointments.upcoming.push(curr);
     else appointments.expired.push(curr);
 
     return appointments;

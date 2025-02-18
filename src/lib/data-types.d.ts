@@ -29,7 +29,7 @@ export type Appointment = {
   documentId: string;
   Name: string;
   Email: string;
-  Date: string;
+  Appointment_Date: string;
   Time: string;
   Notes: string;
   doctor: Doctor;
