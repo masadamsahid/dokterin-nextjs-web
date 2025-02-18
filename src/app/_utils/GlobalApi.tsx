@@ -23,9 +23,11 @@ const createAppointment = async (data: CreateAppointmentData) => await axiosClie
   ...data
 });
 
-const sendEmail = async (data:any) => await axios.post('/api/sendEmail', data);
+const sendEmail = async (data: any) => await axios.post('/api/sendEmail', data);
 
 const getUserAppointmentList = async (user_email: string) => await axiosClient.get(`/appointments?filters[Email][$eq]=${user_email}&populate[doctor][populate]=Image&sort[0]=Date`);
+
+const deleteAppointmentById = async (appointment_document_id: string) => await axiosClient.delete(`/appointments/${appointment_document_id}`);
 
 export default {
   getCategories,
@@ -35,4 +37,5 @@ export default {
   createAppointment,
   sendEmail,
   getUserAppointmentList,
+  deleteAppointmentById,
 };
