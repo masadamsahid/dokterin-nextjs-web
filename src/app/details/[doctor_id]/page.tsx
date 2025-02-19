@@ -3,9 +3,9 @@ import type { Doctor } from "@/lib/data-types";
 import DoctorDetails from "../_components/DoctorDetails";
 
 type Props = {
-  params: {
+  params: Promise<{
     doctor_id: string;
-  };
+  }>;
 }
 
 const DoctorDetailsPage = async ({ params }: Props) => {
@@ -16,7 +16,7 @@ const DoctorDetailsPage = async ({ params }: Props) => {
   });
 
   // console.log(doctor);
-  
+
 
   return (
     <div className="p-5 md:px-20">

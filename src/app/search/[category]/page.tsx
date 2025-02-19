@@ -3,9 +3,9 @@ import GlobalApi from "@/app/_utils/GlobalApi";
 import { Doctor } from "@/lib/data-types";
 
 type Props = {
-  params: {
+  params: Promise<{
     category: string;
-  };
+  }>;
 }
 
 const SearchCategoryPage = async ({ params }: Props) => {
@@ -16,7 +16,6 @@ const SearchCategoryPage = async ({ params }: Props) => {
   if (!doctor_list || doctor_list.length < 1) return null;
 
   // console.log({doctor_list});
-  
 
   return (
     <div>

@@ -13,6 +13,7 @@ export async function POST(req: NextRequest) {
       from: 'Acme <onboarding@resend.dev>',
       to: [res.data.Email],
       subject: 'Appointment Booking Confirmation',
+      // @ts-ignore
       react: EmailTemplate({ response: res.data }),
     });
 

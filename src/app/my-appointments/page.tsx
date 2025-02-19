@@ -3,13 +3,14 @@ import AppointmentList from "./_components/AppointmentList";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import GlobalApi from "../_utils/GlobalApi";
 import type { Appointment } from "@/lib/data-types";
+import { redirect } from "next/navigation";
 
 type Props = {}
 
 const MyAppointments = async (props: Props) => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  if (!user.email) return null;
+  if (!user || !user.email) return redirect('/api/auth/login?post_login_redirect_url=/');
 
   const appointments = await GlobalApi.getUserAppointmentList(user.email).then(({ data: res }) => {
     return res.data as Appointment[];

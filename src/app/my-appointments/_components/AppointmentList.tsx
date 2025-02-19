@@ -2,7 +2,6 @@ import type { Appointment } from "@/lib/data-types";
 import { Calendar, Clock, MapPin } from "lucide-react";
 import Image from "next/image";
 import moment from 'moment';
-import { Button } from "@/components/ui/button";
 import CancelAppointments from "./CancelAppointments";
 
 type Props = {
