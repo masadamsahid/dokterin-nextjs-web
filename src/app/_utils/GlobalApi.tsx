@@ -4,7 +4,7 @@ import axios from "axios";
 const API_KEY = process.env.NEXT_PUBLIC_DOKTERIN_STRAPI_API_TOKEN!;
 
 const axiosClient = axios.create({
-  baseURL: 'http://127.0.0.1:1337/api/',
+  baseURL: `${process.env.NEXT_PUBLIC_DOKTERIN_STRAPI_ENDPOINT}/api/`,
   headers: {
     'Authorization': `Bearer ${API_KEY}`,
   },
