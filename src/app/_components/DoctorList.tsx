@@ -10,6 +10,9 @@ type Props = {
 const DoctorList = ({ doctors, heading='Popular Doctors' }: Props) => {
   if (doctors.length < 1) return null; // TODO: return a "no doctor" component instead of just null;
 
+  console.log(doctors);
+  
+
   return (
     <div className="mb-10">
       <h2 className="font-bold text-xl px-8 text-center">
@@ -27,7 +30,7 @@ const DoctorList = ({ doctors, heading='Popular Doctors' }: Props) => {
             />
             <div className="mt-3 flex items-baseline flex-col gap-1 flex-1">
               <p className="text-[10px] bg-primary/20 p-1 rounded-full px-2 text-primary">
-                {doctor.categories[0].Name}
+                {doctor.categories[0]?.Name}
               </p>
               <h2 className="font-bold">
                 {doctor.Name}
